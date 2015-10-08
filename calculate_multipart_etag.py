@@ -14,7 +14,7 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with s3md5.  If not, see <http://www.gnu.org/licenses/>.
+# along with calculate_multipart_etag.  If not, see <http://www.gnu.org/licenses/>.
 
 
 def calculate_multipart_etag(source_path, chunk_size, expected=None):
