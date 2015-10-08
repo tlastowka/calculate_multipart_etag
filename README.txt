@@ -4,9 +4,7 @@ DESCRPTION:
 
 
 
-	Amazon uses a simple md5 sum for an etag on single part uploads, but on multipart uploads
-	they use a scheme of md5ing the chunks, converting the md5s to binary,
-	and then md5ing the binary of the chunks.
+	Amazon uses a simple md5 sum for an etag on single part uploads, but on multipart uploads they use a scheme of md5ing the chunks, converting the md5s to binary, and then md5ing the binary of the chunks.
 
 	This can make comparing files in s3 to local copies without downloading them a pain.
 
