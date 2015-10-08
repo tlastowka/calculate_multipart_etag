@@ -1,6 +1,6 @@
 DESCRPTION:
 
-	Given a file and a chunk size in megabytes, calculates what the Amazone S3 etag will be.
+	Given a file and a chunk size in megabytes, calculates what the Amazon S3 etag will be.
 
 
 
