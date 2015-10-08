@@ -37,9 +37,8 @@ def calculate_multipart_etag(source_path, chunk_size, expected=None):
     import hashlib
     md5s = []
 
-    keep_going = True
     with open(source_path,'rb') as fp:
-        while keep_going:
+        while True:
 
             data = fp.read(chunk_size)
 
