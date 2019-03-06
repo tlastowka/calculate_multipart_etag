@@ -46,10 +46,16 @@ def calculate_multipart_etag(source_path, chunk_size, expected=None):
                 break
             md5s.append(hashlib.md5(data))
 
-    digests = b"".join(m.digest() for m in md5s)
+   
+    if len(md5s) > 1:
+	digests = b"".join(m.digest() for m in md5s)
+        new_md5 = hashlib.md5(digests)
+        new_etag = '"%s-%s"' % (new_md5.hexdigest(),len(md5s))
+    elif len(md5s) == 1: # file smaller than chunk size
+        new_etag = '"%s"' % md5s[0].hexdigest()
+    else: # empty file
+        new_etag = '""'
 
-    new_md5 = hashlib.md5(digests)
-    new_etag = '"%s-%s"' % (new_md5.hexdigest(),len(md5s))
     if expected:
         if not expected==new_etag:
             raise ValueError('new etag %s does not match expected %s' % (new_etag,expected))
