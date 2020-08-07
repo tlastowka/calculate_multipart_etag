@@ -1,6 +1,6 @@
 # calculate_multipart_etag  Copyright (C) 2015
 #      Tony Lastowka <tlastowka at gmail dot com>
-#      https://github.com/tlastowka	
+#      https://github.com/tlastowka    
 #
 #
 # calculate_multipart_etag is free software: you can redistribute it and/or modify
@@ -48,7 +48,7 @@ def calculate_multipart_etag(source_path, chunk_size, expected=None):
 
    
     if len(md5s) > 1:
-	digests = b"".join(m.digest() for m in md5s)
+        digests = b"".join(m.digest() for m in md5s)
         new_md5 = hashlib.md5(digests)
         new_etag = '"%s-%s"' % (new_md5.hexdigest(),len(md5s))
     elif len(md5s) == 1: # file smaller than chunk size
@@ -64,24 +64,24 @@ def calculate_multipart_etag(source_path, chunk_size, expected=None):
 
 if __name__ == '__main__':
 
-	import sys
+    import sys
 
 
-	if  len(sys.argv) < 3 or len(sys.argv) > 4:
+    if  len(sys.argv) < 3 or len(sys.argv) > 4:
 
-		print("python %s source_path chunk_size [expected]" % (sys.argv[0]))
-		exit()
+        print("python %s source_path chunk_size [expected]" % (sys.argv[0]))
+        exit()
 
-	source_path = sys.argv[1]
-	chunk_size = sys.argv[2]
-	chunk_size = int(chunk_size) * 1024 * 1024
-
-
-	try:
-		expected = '"%s"' % (sys.argv[3])
-	except Exception as e:
-		expected = None
+    source_path = sys.argv[1]
+    chunk_size = sys.argv[2]
+    chunk_size = int(chunk_size) * 1024 * 1024
 
 
-	print(calculate_multipart_etag(source_path,chunk_size,expected))
+    try:
+        expected = '"%s"' % (sys.argv[3])
+    except Exception as e:
+        expected = None
+
+
+    print(calculate_multipart_etag(source_path,chunk_size,expected))
 
